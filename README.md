@@ -1,1 +1,0 @@
-# infinite-image-slider
