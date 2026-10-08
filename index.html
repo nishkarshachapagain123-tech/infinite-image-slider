@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the website responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Infinite Image Slider</title>
+
+    <!-- Connect external CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <section class="slider-section">
+
+            <h1>Infinite Image Slider</h1>
+            <p class="subtitle">
+                Responsive horizontal image slider
+            </p>
+
+            <!-- Main Slider -->
+            <div class="slider" id="imageSlider">
+
+                <!-- Previous Button -->
+                <button
+                    class="slider-control previous"
+                    id="previousButton"
+                    type="button"
+                    aria-label="Previous image">
+                    &#10094;
+                </button>
+
+                <!-- Image Viewport -->
+                <div class="viewport">
+
+                    <!-- Images will be created by JavaScript -->
+                    <div class="track" id="sliderTrack"></div>
+
+                </div>
+
+                <!-- Next Button -->
+                <button
+                    class="slider-control next"
+                    id="nextButton"
+                    type="button"
+                    aria-label="Next image">
+                    &#10095;
+                </button>
+
+            </div>
+
+            <!-- Navigation Dots -->
+            <div
+                class="dots"
+                id="sliderDots"
+                aria-label="Slide navigation">
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Connect JavaScript -->
+    <script src="slider.js"></script>
+
+</body>
+</html>

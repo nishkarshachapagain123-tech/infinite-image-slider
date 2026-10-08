@@ -1,0 +1,464 @@
+/* =====================================================
+   INFINITE IMAGE SLIDER
+   CSS Styling
+   ===================================================== */
+
+
+/* ---------- Basic Reset ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* ---------- HTML ---------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ---------- Body ---------- */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #eef2f7;
+    color: #1f2937;
+}
+
+
+/* ---------- Main Page ---------- */
+
+.page {
+    width: min(100%, 1100px);
+
+    margin: 0 auto;
+
+    padding: 50px 20px;
+}
+
+
+/* ---------- Slider Section ---------- */
+
+.slider-section {
+    width: 100%;
+
+    text-align: center;
+}
+
+
+/* ---------- Heading ---------- */
+
+.slider-section h1 {
+    margin: 0 0 8px;
+
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+
+/* ---------- Subtitle ---------- */
+
+.subtitle {
+    margin: 0 0 30px;
+
+    color: #64748b;
+
+    font-size: 1rem;
+}
+
+
+/* =====================================================
+   SLIDER
+   ===================================================== */
+
+.slider {
+    position: relative;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    padding: 0 58px;
+}
+
+
+/* =====================================================
+   VIEWPORT
+   ===================================================== */
+
+/*
+   The viewport acts like a window.
+
+   overflow: hidden means that only one image
+   is visible at a time.
+*/
+
+.viewport {
+    width: 100%;
+
+    overflow: hidden;
+
+    background-color: #111827;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 14px 35px rgba(15, 23, 42, 0.16);
+
+    aspect-ratio: 16 / 9;
+}
+
+
+/* =====================================================
+   SLIDING TRACK
+   ===================================================== */
+
+/*
+   All slides are placed horizontally.
+
+   JavaScript moves this track using translateX().
+*/
+
+.track {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    /*
+       Helps the browser optimize transform animation.
+    */
+    will-change: transform;
+
+    /*
+       Starting position.
+
+       The first position contains the cloned
+       last image.
+    */
+    transform: translateX(-100%);
+
+    /*
+       Smooth horizontal animation.
+    */
+    transition: transform 500ms ease;
+}
+
+
+/* =====================================================
+   INDIVIDUAL SLIDE
+   ===================================================== */
+
+.slide {
+    position: relative;
+
+    /*
+       Each slide takes exactly 100% of
+       the viewport width.
+    */
+    flex: 0 0 100%;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+}
+
+
+/* =====================================================
+   SLIDE IMAGE
+   ===================================================== */
+
+.slide img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 100%;
+
+    /*
+       Keeps the image looking natural.
+    */
+    object-fit: cover;
+}
+
+
+/* =====================================================
+   IMAGE CAPTION
+   ===================================================== */
+
+.slide figcaption {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: 0;
+
+    padding: 30px 18px 14px;
+
+    color: white;
+
+    text-align: left;
+
+    font-size: 0.95rem;
+
+    /*
+       Dark gradient behind the caption.
+    */
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0, 0, 0, 0.75)
+        );
+}
+
+
+/* =====================================================
+   NEXT / PREVIOUS BUTTONS
+   ===================================================== */
+
+.slider-control {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    color: white;
+
+    background-color: rgba(31, 41, 55, 0.90);
+
+    font-size: 1.6rem;
+
+    line-height: 1;
+
+    transition:
+        background-color 180ms ease,
+        transform 180ms ease;
+}
+
+
+/* ---------- Button Hover ---------- */
+
+.slider-control:hover {
+    background-color: #111827;
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+}
+
+
+/* ---------- Button Focus ---------- */
+
+.slider-control:focus-visible {
+    outline: 3px solid #60a5fa;
+
+    outline-offset: 3px;
+}
+
+
+/* ---------- Previous Position ---------- */
+
+.previous {
+    left: 5px;
+}
+
+
+/* ---------- Next Position ---------- */
+
+.next {
+    right: 5px;
+}
+
+
+/* =====================================================
+   NAVIGATION DOTS
+   ===================================================== */
+
+.dots {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+/* ---------- Individual Dot ---------- */
+
+.dot {
+    width: 11px;
+    height: 11px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    background-color: #cbd5e1;
+
+    transition:
+        transform 180ms ease,
+        background-color 180ms ease;
+}
+
+
+/* ---------- Dot Hover ---------- */
+
+.dot:hover {
+    transform: scale(1.2);
+}
+
+
+/* ---------- Active Dot ---------- */
+
+.dot.active {
+    background-color: #2563eb;
+
+    transform: scale(1.3);
+}
+
+
+/* ---------- Dot Focus ---------- */
+
+.dot:focus-visible {
+    outline: 3px solid #60a5fa;
+
+    outline-offset: 3px;
+}
+
+
+/* =====================================================
+   TABLET RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .page {
+        padding: 35px 12px;
+    }
+
+
+    .slider {
+        padding: 0 45px;
+    }
+
+
+    .slider-control {
+        width: 38px;
+        height: 38px;
+
+        font-size: 1.3rem;
+    }
+
+
+    .previous {
+        left: 2px;
+    }
+
+
+    .next {
+        right: 2px;
+    }
+
+
+    .viewport {
+        border-radius: 12px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 460px) {
+
+    .page {
+        padding: 25px 10px;
+    }
+
+
+    .slider {
+        padding: 0;
+    }
+
+
+    .slider-control {
+        width: 35px;
+        height: 35px;
+
+        font-size: 1.2rem;
+    }
+
+
+    /*
+       Put buttons on top of the image
+       on very small screens.
+    */
+
+    .previous {
+        left: 8px;
+    }
+
+
+    .next {
+        right: 8px;
+    }
+
+
+    .slider-section h1 {
+        font-size: 1.8rem;
+    }
+
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+   ===================================================== */
+
+/*
+   Some users prefer less animation.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    .track,
+    .slider-control,
+    .dot {
+        transition: none;
+    }
+
+}
